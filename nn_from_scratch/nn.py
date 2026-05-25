@@ -30,7 +30,7 @@ class Layer:
     def forward(self, X, act_name="sigmoid"):
         self.X = X
         self.Z = np.dot(X, self.W) + self.b
-        self.A = self.activation(X, act_name)
+        self.A = self.activation(self.Z, act_name)
 
         return self.A
 
@@ -62,10 +62,10 @@ class MLP:
         last_layer = self.layers[-1]
         dZ = last_layer.A - Y
 
-        for i in reversed(range(len(self.layers) - 1)):
+        for i in reversed(range(len(self.layers))):
             layer = self.layers[i]
-            self.dW = (1 / m) * np.dot(self.X.T, dZ)
-            self.db = (1 / m) * np.sum(dZ, axis=0, keepdims=True)
+            layer.dW = (1 / m) * np.dot(layer.X.T, dZ)
+            layer.db = (1 / m) * np.sum(dZ, axis=0, keepdims=True)
 
             if i > 0:
                 prev_layer = self.layers[i - 1]
