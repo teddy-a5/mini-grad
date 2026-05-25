@@ -1,0 +1,15 @@
+[project]
+name = "ml-rev"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "apyori>=1.1.2",
+    "graphviz>=0.21",
+    "jupyter>=1.1.1",
+    "kagglehub>=1.0.1",
+    "mlxtend>=0.24.0",
+    "numpy>=2.4.4",
+    "pandas>=3.0.2",
+]
